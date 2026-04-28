@@ -7,7 +7,7 @@ Este diretório centraliza os artefatos de modelagem UML desenvolvidos durante a
 O diagrama abaixo ilustra o desacoplamento entre a camada de negócio (Agent) e as APIs externas de LLM, utilizando os padrões **Strategy** e **Dependency Injection**.
 
 ### Visualização
-![Diagrama de Classes UML](../analise/Eixo-III-Arquitetura/imagens/diagrama_classes_vanna.png)
+![Diagrama de Classes UML](../analise/Eixo-III-Arquitetura/Imagens/diagrama_classes_vanna.png)
 
 ## 2. Código Fonte (PlantUML)
 
