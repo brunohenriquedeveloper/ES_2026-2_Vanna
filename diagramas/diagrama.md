@@ -24,6 +24,7 @@ skinparam nodesep 70
 skinparam ranksep 80
 top to bottom direction
 
+
 title Eixo III - Desacoplamento da Camada de IA (Vanna AI)
 
 package "Camada de Negócio (Core)" {
