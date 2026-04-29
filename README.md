@@ -1,6 +1,6 @@
 # **Auditoria de Maturidade em Ecossistemas LLM: Vanna AI**
 
-🎥 [**ASSISTA AO VÍDEO DA DEFESA TÉCNICA AQUI**](http://docs.google.com/COLOQUE_O_LINK_DO_YOUTUBE_OU_DRIVE_AQUI)
+🎥 [**ASSISTA AO VÍDEO DA DEFESA TÉCNICA AQUI**](https://youtu.be/EXBY1mnRQP0)
 
 Este repositório contém os artefatos, evidências e o relatório técnico produzidos para a Atividade Avaliativa 1 (A1) da disciplina de Engenharia de Software (COMP0503) da Universidade Federal de Sergipe (UFS).
 
