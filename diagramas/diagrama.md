@@ -1,92 +1,25 @@
-# Modelagem de Arquitetura - Vanna AI
+# Diagrama — Evolução do Pipeline de Qualidade (Eixo D · D4)
 
-Este diretório centraliza os artefatos de modelagem UML desenvolvidos durante a auditoria técnica da disciplina de Engenharia de Software.
+![Evolução do Pipeline de Qualidade — Vanna AI](diagrama_pipeline_d4.png)
 
-## 1. Diagrama de Classes (Eixo III - PJR)
+## O que o diagrama representa
 
-O diagrama abaixo ilustra o desacoplamento entre a camada de negócio (Agent) e as APIs externas de LLM, utilizando os padrões **Strategy** e **Dependency Injection**.
+Comparação entre o **estado atual** do pipeline de testes do Vanna AI e o **modelo proposto** no item D4 (Automação) do plano de evolução da qualidade.
 
-### Visualização
-![Diagrama de Classes UML](../analise/Eixo-III-Arquitetura/Imagens/diagrama_classes_vanna.png)
+### Estado atual
+* Gatilho apenas em `push` na branch `main` — nenhuma validação em Pull Request.
+* Job único de `tox`: `py311-unit` cobre só 4 arquivos; envs credenciados são **ignorados (skipped)** sem chaves de API, gerando uma "ilusão de cobertura".
+* Publicação no PyPI (`python-publish.yaml`) ocorre **sem executar testes** antes.
 
-## 2. Código Fonte (PlantUML)
+### Proposto (D4)
+* **Trilha Rápida** (bloqueante, sem credenciais): lint/tipos → testes unitários + de regressão determinísticos (`MockLlmService` + `SqliteRunner`) → gate de cobertura (`--cov-fail-under`). É o status check obrigatório para merge via *branch protection*.
+* **Trilha Noturna** (credenciada, não bloqueante): integração com provedores e *sanity* via `schedule`, sem travar PRs.
+* Publicação no PyPI condicionada (`needs:`) à trilha rápida verde.
 
-Para garantir a reprodutibilidade e futuras manutenções da arquitetura, o código fonte abaixo pode ser processado em qualquer interpretador PlantUML.
+## Rastreabilidade
+* *Referência no Doc Final:* Eixo D, item D4 (Automação).
+* Evidências relacionadas: `evidencias/evidencias_eixo_c_lacunas.md` e `evidencias/evidencias_eixo_d_plano.md`.
 
-```plantuml
-@startuml
-' Configurações de estilo acadêmico
-skinparam classAttributeIconSize 0
-skinparam monochrome true
-skinparam shadowing false
-skinparam packageStyle rectangle
-skinparam nodesep 70
-skinparam ranksep 80
-top to bottom direction
-
-
-title Eixo III - Desacoplamento da Camada de IA (Vanna AI)
-
-package "Camada de Negócio (Core)" {
-    class Agent {
-        - llm_service: LlmService
-        + __init__(llm_service: LlmService)
-        + send_message(message: str): AsyncGenerator
-        - _send_llm_request(request: LlmRequest): LlmResponse
-    }
-}
-
-package "Fronteira de Isolamento (Contratos)" {
-    abstract class LlmService <<abstract>> {
-        + {abstract} send_request(request: LlmRequest): LlmResponse
-        + {abstract} stream_request(request: LlmRequest): AsyncGenerator
-        + {abstract} validate_tools(tools: List[Any]): List[str]
-    }
-
-    class LlmRequest <<DTO>> {
-        + messages: List<Dict>
-        + system_prompt: str
-        + tools: List<ToolSchema>
-    }
-
-    class LlmResponse <<DTO>> {
-        + content: str
-        + tool_calls: List<ToolCall>
-    }
-}
-
-package "Camada de Integração (Strategies)" {
-    class OpenAILlmService {
-        - _client: OpenAI
-        + __init__(api_key: str, model: str)
-        + send_request(request: LlmRequest): LlmResponse
-        - _build_payload(request: LlmRequest): Dict
-    }
-
-    class AnthropicLlmService {
-        - _client: Anthropic
-        + __init__(api_key: str, model: str)
-        + send_request(request: LlmRequest): LlmResponse
-        - _build_payload(request: LlmRequest): Dict
-        - _parse_message_content(msg: Any): Tuple
-    }
-}
-
-package "APIs Externas" {
-    class OpenAISDK <<external>>
-    class AnthropicSDK <<external>>
-}
-
-' Relacionamentos Estruturais
-Agent "1..1" o--> "1..1" LlmService : Agregação\n(Injeção de Dependência)
-
-LlmService ..> LlmRequest : Depende
-LlmService ..> LlmResponse : Depende
-
-OpenAILlmService .up.|> LlmService : Realização\n(Strategy)
-AnthropicLlmService .up.|> LlmService : Realização\n(Strategy)
-
-OpenAILlmService ..> OpenAISDK : Dependência Externa\nEncapsulada
-AnthropicLlmService ..> AnthropicSDK : Dependência Externa\nEncapsulada
-
-@enduml
+## Arquivos
+* `diagrama_pipeline_d4.png` — imagem para inserir no relatório/slides.
+* `diagrama_pipeline_d4.svg` — versão vetorial (editável / alta resolução).

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 900">
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#5A6B7B"/></marker></defs>
+<rect x="0" y="0" width="1240" height="900" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="620.0" y="42" font-family="Arial,'DejaVu Sans',sans-serif" font-size="26" fill="#1F3864" font-weight="bold" text-anchor="middle">Evolução do Pipeline de Qualidade — Vanna AI</text>
+<text x="620.0" y="68" font-family="Arial,'DejaVu Sans',sans-serif" font-size="14" fill="#5A6B7B" font-weight="normal" text-anchor="middle">Eixo D · D4 (Automação) — Auditoria de Testes · Atividade 3 (COMP0503)</text>
+<rect x="50" y="90" width="530" height="38" rx="10" fill="#C0392B" stroke="#C0392B" stroke-width="2"/>
+<text x="315.0" y="115" font-family="Arial,'DejaVu Sans',sans-serif" font-size="17" fill="#FFFFFF" font-weight="bold" text-anchor="middle">ESTADO ATUAL</text>
+<rect x="660" y="90" width="530" height="38" rx="10" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
+<text x="925.0" y="115" font-family="Arial,'DejaVu Sans',sans-serif" font-size="17" fill="#FFFFFF" font-weight="bold" text-anchor="middle">PROPOSTO (D4)</text>
+<rect x="50" y="150" width="530" height="73" rx="10" fill="#FCEAE6" stroke="#C0392B" stroke-width="2"/>
+<text x="64" y="174" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#C0392B" font-weight="bold" text-anchor="start">Gatilho</text>
+<text x="64" y="192" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">• push na branch main (apenas)</text>
+<text x="64" y="209" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">• nenhum disparo em Pull Request</text>
+<line x1="315.0" y1="226" x2="315.0" y2="246" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="50" y="249" width="530" height="73" rx="10" fill="#FFF6E5" stroke="#C9821B" stroke-width="2"/>
+<text x="64" y="273" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#C9821B" font-weight="bold" text-anchor="start">Job único: tox</text>
+<text x="64" y="291" font-family="Consolas,'DejaVu Sans Mono',monospace" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">py311-unit cobre só 4 arquivos de teste</text>
+<text x="64" y="308" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">ruff · mypy · sanity (sem credencial)</text>
+<line x1="315.0" y1="325" x2="315.0" y2="345" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="50" y="348" width="530" height="73" rx="10" fill="#FCEAE6" stroke="#C0392B" stroke-width="2"/>
+<text x="64" y="372" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#C0392B" font-weight="bold" text-anchor="start">Envs credenciados</text>
+<text x="64" y="390" font-family="Consolas,'DejaVu Sans Mono',monospace" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">py311-anthropic · py311-openai (integração)</text>
+<text x="64" y="407" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">SKIPPED sem chaves -&gt; ilusão de cobertura</text>
+<line x1="315.0" y1="424" x2="315.0" y2="444" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="50" y="447" width="530" height="73" rx="10" fill="#FCEAE6" stroke="#C0392B" stroke-width="2"/>
+<text x="64" y="471" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#C0392B" font-weight="bold" text-anchor="start">Publicação no PyPI</text>
+<text x="64" y="489" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">python-publish.yaml em nova release</text>
+<text x="64" y="506" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">publica SEM executar testes antes</text>
+<text x="50" y="560" font-family="Arial,'DejaVu Sans',sans-serif" font-size="14" fill="#C0392B" font-weight="bold" text-anchor="start">Falhas estruturais:</text>
+<text x="50" y="584" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#7A2A20" font-weight="normal" text-anchor="start">× Sem execução em Pull Request (A4 / C4)</text>
+<text x="50" y="605" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#7A2A20" font-weight="normal" text-anchor="start">× Sem limiar de cobertura (A5 / C4)</text>
+<text x="50" y="626" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#7A2A20" font-weight="normal" text-anchor="start">× Publicação sem testes (A4)</text>
+<text x="50" y="647" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#7A2A20" font-weight="normal" text-anchor="start">× Fluxos centrais sem teste determinístico (C1 / C5)</text>
+<rect x="660" y="150" width="530" height="73" rx="10" fill="#E8F5EC" stroke="#2E7D32" stroke-width="2"/>
+<text x="674" y="174" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#2E7D32" font-weight="bold" text-anchor="start">Gatilho</text>
+<text x="674" y="192" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">• pull_request  +  push</text>
+<text x="674" y="209" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">• valida ANTES do merge</text>
+<line x1="925.0" y1="226" x2="925.0" y2="246" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="652" y="243" width="546" height="279" rx="12" fill="#F3FBF5" stroke="#2E7D32" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="666" y="265" font-family="Arial,'DejaVu Sans',sans-serif" font-size="13" fill="#2E7D32" font-weight="bold" text-anchor="start">Trilha Rápida — bloqueante, sem credenciais</text>
+<rect x="660" y="275" width="530" height="56" rx="10" fill="#E8F5EC" stroke="#2E7D32" stroke-width="2"/>
+<text x="674" y="299" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#2E7D32" font-weight="bold" text-anchor="start">1. Lint &amp; Tipos</text>
+<text x="674" y="317" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">ruff · mypy</text>
+<line x1="925.0" y1="334" x2="925.0" y2="354" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="660" y="357" width="530" height="73" rx="10" fill="#E8F5EC" stroke="#2E7D32" stroke-width="2"/>
+<text x="674" y="381" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#2E7D32" font-weight="bold" text-anchor="start">2. Unit + Regressão (novo)</text>
+<text x="674" y="399" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">MockLlmService (com tool_calls) + SqliteRunner</text>
+<text x="674" y="416" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">determinístico, sem API real</text>
+<line x1="925.0" y1="433" x2="925.0" y2="453" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="660" y="456" width="530" height="56" rx="10" fill="#E8F5EC" stroke="#2E7D32" stroke-width="2"/>
+<text x="674" y="480" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#2E7D32" font-weight="bold" text-anchor="start">3. Gate de Cobertura</text>
+<text x="674" y="498" font-family="Consolas,'DejaVu Sans Mono',monospace" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">--cov-fail-under (ratchet de cobertura)</text>
+<line x1="925.0" y1="525" x2="925.0" y2="545" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="660" y="548" width="530" height="56" rx="10" fill="#EEF3F9" stroke="#1F4E79" stroke-width="2"/>
+<text x="674" y="572" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#1F4E79" font-weight="bold" text-anchor="start">Branch protection → MERGE</text>
+<text x="674" y="590" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">status check obrigatório p/ mesclar na main</text>
+<line x1="925.0" y1="607" x2="925.0" y2="627" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="660" y="630" width="530" height="73" rx="10" fill="#FFF6E5" stroke="#C9821B" stroke-width="2"/>
+<text x="674" y="654" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#C9821B" font-weight="bold" text-anchor="start">Trilha Noturna — credenciada, não bloqueante</text>
+<text x="674" y="672" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">schedule (cron): anthropic · openai · sanity</text>
+<text x="674" y="689" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">resultado visível, não trava PRs</text>
+<line x1="925.0" y1="706" x2="925.0" y2="726" stroke="#5A6B7B" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="660" y="729" width="530" height="56" rx="10" fill="#E8F5EC" stroke="#2E7D32" stroke-width="2"/>
+<text x="674" y="753" font-family="Arial,'DejaVu Sans',sans-serif" font-size="15" fill="#2E7D32" font-weight="bold" text-anchor="start">Publicação no PyPI</text>
+<text x="674" y="771" font-family="Arial,'DejaVu Sans',sans-serif" font-size="12.5" fill="#333" font-weight="normal" text-anchor="start">needs: trilha rápida verde  → só publica se passar</text>
+</svg>
