@@ -1,40 +1,39 @@
-# **Auditoria de Maturidade em Ecossistemas LLM: Vanna AI**
+# **Auditoria de Testes de Software e Evolução da Qualidade: Vanna AI**
 
-🎥 [**ASSISTA AO VÍDEO DA DEFESA TÉCNICA AQUI**](https://youtu.be/to642BGPos4?si=ByJ5zebEW50y6GfI)
+🎥 [**ASSISTA AO VÍDEO DA DEFESA TÉCNICA AQUI**](SUBSTITUIR_PELO_LINK_DO_VIDEO_DA_ATIVIDADE_3)
 
-Este repositório contém os artefatos, evidências e o relatório técnico produzidos para a Atividade Avaliativa 1 (A1) da disciplina de Engenharia de Software (COMP0503) da Universidade Federal de Sergipe (UFS).
 
-O objetivo do trabalho é realizar uma auditoria rigorosa no projeto open source [Vanna AI](https://github.com/vanna-ai/vanna), contrastando a agilidade do seu ecossistema com as práticas exigidas pelos modelos de maturidade **CMMI-DEV (v2.0)** e **MPS.BR (Nível G)**.
+Este repositório contém os artefatos, evidências e o relatório técnico produzidos para a **Atividade Avaliativa 3 (A3)** da disciplina de Engenharia de Software (COMP0503) da Universidade Federal de Sergipe (UFS).
+
+Dando continuidade às Atividades 1 e 2 sobre o mesmo projeto, o objetivo desta etapa é realizar um **diagnóstico da estratégia de testes** do projeto open source [Vanna AI](https://github.com/vanna-ai/vanna) — investigando existência, qualidade, cobertura e relevância dos testes automatizados — e propor um **plano concreto de evolução da qualidade** com base em boas práticas.
 
 ## **📂 Guia do Repositório**
 
-Abaixo está o mapeamento dos artefatos produzidos pela equipe. O relatório escrito aprofundado encontra-se na raiz, enquanto os insumos técnicos estão divididos em diretórios:
+Abaixo está o mapeamento dos artefatos produzidos pela equipe. O relatório completo encontra-se em `/docs`, enquanto os insumos técnicos estão divididos em diretórios:
 
-* 🚀 **/analise**: Análise detalhada dos eixos apresentados na auditoria com possivelmente evidências complementares adicionais em relação às utilizadas no pdf.
-* 🗺️ **/diagramas**: Contém o diagrama de classes UML (arquitetura\_vanna.png) evidenciando o desacoplamento da IA (Eixo III).  
-* 📸 **/evidencias**: Links de rastreabilidade transversal (Issues/PRs) e dos workflows de CI/CD referentes ao PDF.
-* 📄 **A1\_Vanna\_Matheus.pdf**: O relatório principal e completo contendo a auditoria acadêmica.  
-
+* 📄 **/docs**: Relatório técnico completo da auditoria (PDF) e a apresentação de impacto (slides Beamer exportados).
+* 📸 **/evidencias**: Links de rastreabilidade reais (arquivos, configs, workflows, Issues/PRs) que comprovam cada achado do PDF, organizados por eixo.
+* 🗺️ **/diagramas**: Diagrama da evolução do pipeline de qualidade (Eixo D · D4), em PNG e SVG.
 
 ## **📊 Sumário Executivo: O que você encontrará no PDF?**
 
-O relatório final está estruturado em 5 Eixos de Auditoria, culminando em um Plano de Melhoria. Aqui está um resumo dos achados detalhados no documento:
+O relatório está estruturado em 4 Eixos de Investigação, culminando em um Plano de Evolução da Qualidade. Resumo dos achados:
 
-1. **Eixo I (Ciclo de Vida e Ágil \- GPR):** \- *Achado:* O projeto tem um ciclo ágil altamente agressivo (78 releases contínuas), mas peca pela ausência de planejamento de longo prazo (Milestones inativos) e total ausência de um mapeamento formal de riscos (vulnerabilidade a APIs de LLM externas).  
-2. **Eixo II (Engenharia de Requisitos \- GRE):** \- *Achado:* A rastreabilidade básica existe no GitHub, mas é puramente reativa. Não há processos formais de RFCs (Request for Comments) para funcionalidades críticas, impactando a gestão de mudanças.  
-3. **Eixo III (Arquitetura e Modelagem):** \- *Achado:* Excelente isolamento da camada de IA. O sistema adota padrões como *Strategy* e *Microkernel*, tornando os LLMs (OpenAI, Gemini, Ollama) componentes perfeitamente plugáveis e agnósticos à regra de negócio principal.  
-4. **Eixo IV (Verificação e Validação \- V\&V):** \- *Achado:* Forte adoção de Integração Contínua (CI) com validações automatizadas via tox. Contudo, falha criticamente na Validação da IA, pois carece de pipelines defensivas em produção para evitar "alucinações" na geração das consultas SQL.  
-5. **Eixo V (Qualidade de Software \- GQA):** \- *Achado:* Utiliza ferramentas rigorosas no CONTRIBUTING.md (Ruff, Mypy Strict), mas possui dívida técnica acumulada intencionalmente na transição para a "Versão 2.0" e ausência de varreduras de segurança estática (SAST).  
-6. **Plano de Melhoria de Processo:**  
-   * *Proposta:* Implementação de 2 ações prioritárias de baixo custo focadas em **GPR** (Gerência de Projetos com Controle de Riscos) e **GRE** (Rastreabilidade Bidirecional com templates).
+1. **Eixo A (Estratégia Atual de Testes):** \- *Achado:* Há pasta `/tests` dedicada e convenções no `pyproject.toml` (Pytest, Tox, Ruff, MyPy). Porém o CI dispara **apenas em `push` na `main`, nunca em Pull Requests**, e não há badge nem relatório de cobertura. **(Risco Médio)**
+
+2. **Eixo B (Qualidade Técnica dos Testes):** \- *Achado:* Os testes existentes têm nomenclatura clara, docstrings e boa organização por funcionalidade, seguindo boas práticas de legibilidade e manutenção. **(Risco Baixo)**
+
+3. **Eixo C (Lacunas, Riscos e Falhas Potenciais):** \- *Achado:* Funcionalidades centrais do produto (geração de SQL, `ErrorRecoveryStrategy`, streaming, gráficos, execução de código) **não possuem testes independentes de credenciais externas**. Sem execução em PR e sem limiar de cobertura, não há proteção real contra regressões — uma "ilusão de cobertura". **(Risco Alto)**
+
+4. **Eixo D (Plano de Evolução da Qualidade):** \- *Proposta:* Priorização das lacunas críticas; foco inicial em testes unitários determinísticos (via `MockLlmService` + `SqliteRunner`); implantação gradual sem travar o desenvolvimento; **automação** em duas trilhas (rápida sem credencial / noturna credenciada) com gate de cobertura e publicação condicionada a testes; e **critérios de sucesso** com escala de maturidade (Nível 0 → 3).
 
 ## **👥 Equipe de Auditoria**
 
-* **Diego Carvalho Cavalcante** \- Eixo I (Ágil)  
-* **Bruno Henrique Carneiro da Silva** \- Eixo II (Requisitos)  
-* **Fábio Henrique Lisboa de Souza** \- Eixo III (Arquitetura)  
-* **Leonardo Caricchio do Nascimento** \- Eixo IV (V\&V)  
-* **José Weverton de Oliveira Vilar** \- Eixo V (Qualidade)  
-* **Flávio Henrique de Jesus Cruz** \- Estratégia e Plano de Melhoria  
-* **Matheus Henrique Silva de Melo** \- Tech Lead (Estrutura e Revisão)  
+* **Leonardo Caricchio do Nascimento** \- Eixo A — itens A1, A2 e A3 (estrutura, tipos de teste e documentação)
+* **Bruno Henrique Carneiro da Silva** \- Eixos A e B — itens A4, A5 e B1 (CI/CD, cobertura e clareza dos testes)
+* **Diego Carvalho Cavalcante** \- Eixos B e C — itens B3, C2 e C3 (mocks/fixtures, módulos de risco e isolamento de dependências)
+* **Matheus Henrique Silva de Melo** \- Eixo B — itens B2, B4 e B5 (isolamento, relevância e manutenção) · Tech Lead (Estrutura e Revisão)
+* **José Weverton de Oliveira Vilar** \- Eixo C — itens C1, C4 e C5 (lacunas críticas, regressões e diagnóstico de bugs)
+* **Fábio Henrique Lisboa de Souza** \- Eixo D — itens D1, D2 e D3 (priorização, camadas de foco e implantação gradual)
+* **Flávio Henrique de Jesus Cruz** \- Eixo D — itens D4 e D5 (automação e critérios de sucesso)
 * **Guilherme Sollano Andrade dos Santos** \- Direção e Edição do Vídeo
