@@ -25,7 +25,7 @@ O relatório está estruturado em 4 Eixos de Investigação, culminando em um Pl
 
 3. **Eixo C (Lacunas, Riscos e Falhas Potenciais):** \- *Achado:* Funcionalidades centrais do produto (geração de SQL, `ErrorRecoveryStrategy`, streaming, gráficos, execução de código) **não possuem testes independentes de credenciais externas**. Sem execução em PR e sem limiar de cobertura, não há proteção real contra regressões — uma "ilusão de cobertura". **(Risco Alto)**
 
-4. **Eixo D (Plano de Evolução da Qualidade):** \- *Proposta:* Priorização das lacunas críticas; foco inicial em testes unitários determinísticos (via `MockLlmService` + `SqliteRunner`); implantação gradual sem travar o desenvolvimento; **automação** em duas trilhas (rápida sem credencial / noturna credenciada) com gate de cobertura e publicação condicionada a testes; e **critérios de sucesso** com escala de maturidade (Nível 0 → 3).
+4. **Eixo D (Plano de Evolução da Qualidade):** \- Proposta: Priorização do Top 3 de riscos (Testes de Contrato/Segurança contra Prompt Injections, Isolamento de Rede para erradicar Flaky Tests, e Travas de Regressão na CI/CD); foco estrito na Camada de Integração e Contratos (evitando o custo de refatoração para testes unitários na God Class); implantação gradual (Shift-Left) sem travar o desenvolvimento; automação em duas fases (prevenção local silenciosa com SAST/Bandit no pre-commit e pipeline de CI/CD com diff-cover exigindo testes apenas em código novo); e critérios de sucesso focados em estancar o crescimento da dívida técnica e elevar a maturidade do projeto (MPS.BR - Nível G).
 
 ## **👥 Equipe de Auditoria**
 
