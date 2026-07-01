@@ -1,6 +1,6 @@
 # **Auditoria de Testes de Software e Evolução da Qualidade: Vanna AI**
 
-🎥 [https://youtu.be/aNFVPIMzgwY?si=VibYBFucFYJv5608)
+🎥 https://youtu.be/aNFVPIMzgwY?si=VibYBFucFYJv5608
 
 
 Este repositório contém os artefatos, evidências e o relatório técnico produzidos para a **Atividade Avaliativa 3 (A3)** da disciplina de Engenharia de Software (COMP0503) da Universidade Federal de Sergipe (UFS).
